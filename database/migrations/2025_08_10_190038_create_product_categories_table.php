@@ -14,13 +14,19 @@ return new class extends Migration
         Schema::create('product_categories', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('product_categories')->onDelete('cascade');
             $table->string('image')->nullable();
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('tagline')->nullable();
             $table->text('description');
             $table->timestamps();
+        });
+
+        Schema::table('product_categories', function (Blueprint $table) {
+            $table->foreign('parent_id')
+                ->references('id')
+                ->on('product_categories')
+                ->onDelete('cascade');
         });
     }
 
