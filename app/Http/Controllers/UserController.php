@@ -47,8 +47,8 @@ class UserController extends Controller
 
         try {
             $users = $this->userRepository->getAllPaginated(
-              $request['search'] ?? null,
-              $request['row_per_page']  
+                $request['search'] ?? null,
+                $request['row_per_page']
             );
 
             return ResponseHelpers::jsonResponse(true, 'Users retrieved successfully.', PaginateResource::make($users, UserResource::class), 200);
@@ -85,11 +85,11 @@ class UserController extends Controller
 
             $user = $this->userRepository->getById($id);
 
-            if(!$user) {
+            if (!$user) {
                 return ResponseHelpers::jsonResponse(true, 'User not found.', null, 404);
             }
 
-            return ResponseHelpers::jsonResponse(true, 'Users retrieved successfully.', UserResource::make($user), 200);
+            return ResponseHelpers::jsonResponse(true, 'User retrieved successfully.', UserResource::make($user), 200);
         } catch (\Exception $e) {
             return ResponseHelpers::jsonResponse(false, $e->getMessage(), null, 500);
         }
@@ -109,7 +109,7 @@ class UserController extends Controller
 
             $user = $this->userRepository->getById($id);
 
-            if(!$user) {
+            if (!$user) {
                 return ResponseHelpers::jsonResponse(true, 'User not found.', null, 404);
             }
 
@@ -130,10 +130,10 @@ class UserController extends Controller
             if (! Str::isUuid($id)) {
                 return ResponseHelpers::jsonResponse(false, 'Invalid UUID.', null, 422);
             }
-            
+
             $user = $this->userRepository->getById($id);
 
-            if(!$user) {
+            if (!$user) {
                 return ResponseHelpers::jsonResponse(true, 'User not found.', null, 404);
             }
 
