@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Traits\UUID;
 use Illuminate\Database\Eloquent\Model;
 
-class StoreBallanceHistory extends Model
+class StoreBalanceHistory extends Model
 {
     use UUID;
 

@@ -42,7 +42,7 @@ class Store extends Model
     // relationship one store has one balance
     public function storeBalance()
     {
-        return $this->hasOne(StoreBallance::class);
+        return $this->hasOne(StoreBalance::class);
     }
 
     // relationship one store has many products

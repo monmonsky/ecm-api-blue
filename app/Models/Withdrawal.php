@@ -19,6 +19,6 @@ class Withdrawal extends Model
 
     public function storeBalance()
     {
-        return $this->belongsTo(StoreBallance::class, 'store_balance_id');
+        return $this->belongsTo(StoreBalance::class, 'store_balance_id');
     }
 }
