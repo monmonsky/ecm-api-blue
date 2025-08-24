@@ -14,7 +14,7 @@ class StoreBalanceRepository implements StoreBalanceRepositoryInterface
             if ($search) {
                 $query->search($search);
             }
-        });
+        })->with(['storeBalanceHistories']);
 
         if ($limit) {
             $query->take($limit);
@@ -36,7 +36,7 @@ class StoreBalanceRepository implements StoreBalanceRepositoryInterface
 
     public function getById(string $id)
     {
-        $query = StoreBalance::where('id', $id);
+        $query = StoreBalance::where('id', $id)->with(['storeBalanceHistories']);;
 
         return $query->first();
     }
@@ -47,7 +47,7 @@ class StoreBalanceRepository implements StoreBalanceRepositoryInterface
 
         try {
 
-            $storeBalance = $this->getById($id);
+            $storeBalance = StoreBalance::find($id);
 
             if (!$storeBalance) {
                 throw new \Exception('Store Balance not found.');
